@@ -11,12 +11,6 @@
 </head>
 <body>
 	<c:import url="/WEB-INF/jsp/menu.jsp" />
-	<div class="container mt-3">
-		<h2>AnimaShow</h2>
 
-		<h3>
-			Cadastro de <a href="/usuario/lista">usuários</a>
-		</h3>
-	</div>
 </body>
 </html>

@@ -1,6 +1,7 @@
 package com.vicperry.projetojava.model.domain;
 
 public class Usuario {
+	private Integer id;
 	private String nome;
 	private String email;
 	private String senha;
@@ -22,6 +23,14 @@ public class Usuario {
 	@Override
 	public String toString() {
 		return "Usuario [nome=" + nome + ", email=" + email + ", senha=" + senha + "]";
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getNome() {
