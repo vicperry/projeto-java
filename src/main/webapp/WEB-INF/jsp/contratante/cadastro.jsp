@@ -7,34 +7,26 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <meta charset="utf-8">
-<title>Cadastro de Usuário</title>
+<title>Cadastro de Contratante</title>
 </head>
 <body>
 	<c:import url="/WEB-INF/jsp/menu.jsp" />
-
 	<div class="container">
-		<form action="/cep" class="form-inline" method="post">
 
-			<label>Cep:</label> <input type="text" name="cep" value="20010020"
-				class="form-control">
-
-			<button type="submit" class="btn btn-primary">Buscar</button>
-		</form>
-
-		<form action="/usuario/incluir" method="POST">
+		<form action="/contratante/incluir" method="POST">
 			<div class="form-group">
-				<label>Nome: </label> <input type="text" name="nome" value="Vic Hug"
-					class="form-control" />
+				<label>Nome: </label> <input type="text" name="nome"
+					value="Contratante do Mal" class="form-control" />
 			</div>
 
 			<div class="form-group">
-				<label>E-mail: </label> <input type="email" name="email"
-					value="vic@gmail.com" class="form-control" />
+				<label>Telefone: </label> <input type="tel" name="telefone"
+					value="123456789" class="form-control" />
 			</div>
 
 			<div class="form-group">
-				<label>Senha: </label> <input type="password" name="senha"
-					value="123" class="form-control" />
+				<label>CPF: </label> <input type="text" name="cpf"
+					value="12345678900" class="form-control" />
 			</div>
 
 			<c:import url="/WEB-INF/jsp/endereco/cadastro.jsp" />

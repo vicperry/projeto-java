@@ -2,17 +2,24 @@ package com.vicperry.projetojava.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.vicperry.projetojava.model.domain.Endereco;
 import com.vicperry.projetojava.model.domain.Usuario;
 import com.vicperry.projetojava.model.repository.UsuarioRepository;
+import com.vicperry.projetojava.model.service.UsuarioService;
 
 @Controller
 public class UsuarioController {
+	
+	@Autowired
+	private UsuarioService usuarioService;
+	
 	private String mensagem;
 
 	@GetMapping("/usuario")
@@ -22,7 +29,7 @@ public class UsuarioController {
 
 	@GetMapping("/usuario/lista")
 	public String getLista(Model model) {
-		model.addAttribute("usuarios", UsuarioRepository.obterLista());
+		model.addAttribute("usuarios", usuarioService.obterLista());
 		model.addAttribute("mensagem", mensagem);
 		mensagem = null;
 //		List<Usuario> lista = UsuarioRepository.obterLista();
@@ -36,9 +43,11 @@ public class UsuarioController {
 	}
 
 	@PostMapping("/usuario/incluir")
-	public String postCadastro(Usuario usuario) {
+	public String postCadastro(Usuario usuario, Endereco endereco) {
+		
+		usuario.setEndereco(endereco);
 
-		UsuarioRepository.incluir(usuario);
+		usuarioService.incluir(usuario);
 		
 		mensagem = "A inclusão do usuário "+usuario.getNome()+" foi realizada com sucesso!!!";
 
@@ -48,8 +57,8 @@ public class UsuarioController {
 	
 	@GetMapping("/usuario/{id}/excluir")
 	public String excluir(@PathVariable Integer id) {
-		Usuario usuario = UsuarioRepository.excluir(id);
-		mensagem = "A exclusão do usuário "+usuario.getNome()+" foi realizada com sucesso!!!";
+		usuarioService.excluir(id);
+		mensagem = "A exclusão do usuário "+id+" foi realizada com sucesso!!!";
 		return "redirect:/usuario/lista";
 	}
 	

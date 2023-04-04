@@ -11,12 +11,12 @@
       <li class="active"><a href="#">Home</a></li>
 	  <c:if test="${not empty usuario}">	
 	      <li><a href="/usuario/lista">Usuário</a></li>
-	      <li><a href="#">Contratante</a></li>
-	      <li><a href="#">Artista</a></li>
-	      <li><a href="#">Palhaço</a></li>
-	      <li><a href="#">Trapezista</a></li>
-	      <li><a href="#">Mágico</a></li>
-	      <li><a href="#">Contrato</a></li>
+	      <li><a href="/contratante/lista">Contratante</a></li>
+	      <li><a href="/artista/lista">Artista</a></li>
+	      <li><a href="/palhaco/lista">Palhaço</a></li>
+	      <li><a href="/trapezista/lista">Trapezista</a></li>
+	      <li><a href="/magico/lista">Mágico</a></li>
+	      <li><a href="/contrato/lista">Contrato</a></li>
       </c:if>
     </ul>
     

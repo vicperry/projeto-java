@@ -41,6 +41,14 @@
 						<th>Nome</th>
 						<th>Senha</th>
 						<th>E-mail</th>
+						<th>Endereço</th>
+						<th>Admin</th>
+						<th>Contratantes</th>
+						<th>Artistas</th>
+						<th>Contratos</th>
+						<c:if test="${usuario.admin}">
+							<th></th>
+						</c:if>
 					</tr>
 				</thead>
 				<tbody>
@@ -51,7 +59,14 @@
 							<td>${u.nome}</td>
 							<td>${u.senha}</td>
 							<td>${u.email}</td>
-							<td><a href="/usuario/${u.id}/excluir">excluir</a></td>
+							<td>${u.endereco}</td>
+							<td>${u.admin}</td>
+							<td>${u.contratantes.size()}</td>
+							<td>${u.artistas.size()}</td>
+							<td>${u.contratos.size()}</td>
+							<c:if test="${usuario.admin}">
+								<td><a href="/usuario/${u.id}/excluir">excluir</a></td>
+							</c:if>
 						</tr>
 					</c:forEach>
 				</tbody>

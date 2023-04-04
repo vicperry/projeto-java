@@ -6,36 +6,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.CrudRepository;
+
+
 import com.vicperry.projetojava.model.domain.Usuario;
 
-public class UsuarioRepository {
+@Repository
+public interface UsuarioRepository extends CrudRepository<Usuario, Integer> {
 
-	private static Integer id = 1;
-
-	private static Map<Integer, Usuario> mapaUsuario = new HashMap<Integer, Usuario>();
-
-	private static List<Usuario> lista = new ArrayList<Usuario>();
-
-	public static boolean incluir(Usuario usuario) {
-
-		usuario.setId(id++);
-
-		try {
-			mapaUsuario.put(usuario.getId(), usuario);
-			return true;
-		} catch (Exception e) {
-			return false;
-		}
-
-	}
-
-	public static Usuario excluir(Integer key) {
-
-		return mapaUsuario.remove(key);
-	}
-
-	public static Collection<Usuario> obterLista() {
-		return mapaUsuario.values();
-	}
-
+	@Query("from Usuario u where u.email = :email and u.senha = :senha")
+	Usuario autenticacao(String email, String senha);
 }
